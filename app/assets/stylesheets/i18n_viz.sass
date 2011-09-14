@@ -1,0 +1,24 @@
+@import "compass/css3/border-radius"
+@import "compass/css3/gradient"
+
+#i18n-viz-tooltip
+  display: none
+  position: absolute
+  top: 100px
+  left: 200px
+  border: 2px solid #A9A9A9
+  +border-radius(5px)
+  background-color: #F5F5F5
+  +linear-gradient(#FFFFFF, #F5F5F5)
+  padding: 10px
+  a, span
+    margin-right: 10px
+    &:last-child
+      margin-right: 0
+  
+.i18n-viz
+  cursor: help
+  background: lightyellow !important
+  &:hover
+    color: black
+    background: yellow !important
