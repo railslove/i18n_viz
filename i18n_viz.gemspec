@@ -8,4 +8,5 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
   s.version = "0.0.1"
+  s.homepage = "https://github.com/jhilden/i18n_viz"
 end
