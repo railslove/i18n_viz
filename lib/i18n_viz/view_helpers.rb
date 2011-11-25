@@ -19,7 +19,9 @@ module I18nViz
     end
 
     def display_i18n_viz?
-      I18nViz.enabled? && params[:i18n_viz]
+
+
+      I18nViz.enabled? && defined?(params) && defined?(params[:i18n_viz])
     end
 
   end
