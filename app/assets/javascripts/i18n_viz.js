@@ -1,26 +1,34 @@
 $(document).ready(function(){
-  var i18n_regexp = new RegExp(/--([a-z0-9_\.]+)--/i);
+  var i18n_regexp        = new RegExp(/--([a-z0-9_\.]+)--/i);
   var i18n_regexp_global = new RegExp(/--([a-z0-9_\.]+)--/gi);
-  
-  // i18n tooltip
+
+  // append i18n tooltip
   $("body")
     .append('<div id="i18n-viz-tooltip">...</div>')
-    .click(function() { $("#i18n-viz-tooltip").hide() })
-  
+      .click(function() { $("#i18n-viz-tooltip").hide() })
+
+  // get all the textnode children for an element
   $.fn.textNodes = function() {
-    return $(this).contents().filter(function(){ return this.nodeType == 3 });
+    return $(this).contents().filter(function(){
+      try {
+        return (this.nodeType == 3);
+      } catch(err) {
+        return false;
+      }
+    });
   };
-  
-  // add i18n attributes, classes, events
-  $.fn.addI18n = function(keys) {
+
+  // enrich elements with i18n attributes, classes, tooltip events
+  $.fn.enrichWithI18nData = function(keys) {
     $(this)
       .addClass("i18n-viz")
       .data("i18n-keys", keys)
       
+      // tooltip events
       .mouseenter(function(){
         $tooltip = $("#i18n-viz-tooltip");
         
-        var top = $(this).offset().top - 40;
+        var top = $(this).offset().top - $tooltip.outerHeight();
         var left = $(this).offset().left;
         if (top < 0) top = $(this).offset().top + $(this).height() + 10;
         
@@ -37,12 +45,10 @@ $(document).ready(function(){
           .css({top: top, left: left})
           .show()
       })
-      .mouseleave(function() {
-        setTimeout(function() { $("#i18n-viz-tooltip").fadeOut('fast'); }, 1500);
-      });
   };
   
-  function getI18nKeys(text) {
+  // extract i18n keys from a textnode (e.g. "translated text--en.translation.key--")
+  function extractI18nKeys(text) {
     var keys = text.match(i18n_regexp_global);
     keys.forEach(function(value, index) { keys[index] = value.replace(/--/g, "") });
     return keys;
@@ -58,25 +64,30 @@ $(document).ready(function(){
     }
   });
 
+  // process elements with i18n strings in their text
   $(":i18n-el").each(function(){
     var text = $(this).text();
     
-    var keys = getI18nKeys(text);
-    $(this).addI18n(keys);
+    var keys = extractI18nKeys(text);
+    $(this).enrichWithI18nData(keys);
     
-    $(this).textNodes().each(function() { $(this).replaceWith( $(this).text().replace(i18n_regexp_global, "") ); })
+    // clear i18n data from text
+    $(this).textNodes().each(function() {
+      $(this).replaceWith( $(this).text().replace(i18n_regexp_global, "") );
+    })
   });
   
+  // process elements with i18n strings in the value or placeholder attributes
   $("input:i18n-value").each(function(){
-    var value = $(this).val();
-    var placeholder = $(this).attr('placeholder');
-    var text = value + placeholder;
+    var value             = $(this).val();
+    var placeholder_value = $(this).attr('placeholder');
+
+    var keys = extractI18nKeys(value + placeholder_value);
+    $(this).enrichWithI18nData(keys);
     
-    var keys = getI18nKeys(text);
-    $(this).addI18n(keys);
-    
+    // clear i18n data from value and placeholder attributes
     $(this).val(value.replace(i18n_regexp_global, ""));
-    if (placeholder) $(this).attr('placeholder', placeholder.replace(i18n_regexp_global, ""));
+    if (placeholder_value)  $(this).attr('placeholder', placeholder_value.replace(i18n_regexp_global, ""));
   });  
 })
 
