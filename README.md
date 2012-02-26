@@ -2,7 +2,17 @@
 
 Gem to visualize i18n strings within a rails project.
 
-More description coming soon ...
+**Problem**:
+
+For non-developers (e.g. translators and product managers) working with i18n Rails apps, it's very difficult to make the connection from a string within the app to the correct i18n key to edit the corresponding translation.
+
+**Solution**:
+
+Hack the i18n keys into the frontend, so that the keys can be displayed as nice overlay tooltip right within the app.
+
+If you you use a translation management app, such as http://webtranslateit.com, you get the additional benefit of clickable links that point you right to the correct string to edit within the translation tool.
+
+
 
 ## Requirements
 
