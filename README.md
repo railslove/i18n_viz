@@ -69,6 +69,39 @@ The i18n_viz Javascript then parses this and enriches it into:
     
 The so enriched elements then get nice little tooltips attached with the i18n keys and possibly links to where they can be found/changed.
 
+
+## Gotchas
+
+#### `--key--` breaks app (variable assignment)
+
+If you should be assigning i18n output directly into variables (e.g. within inline javascript, JS data-attributes, or other variables), the whole `--key--` thing might actually break your application.
+
+For example this usage of a data-attribute:
+
+    de:
+      date:
+        js_format: "dd.mm.yyyy"
+        
+
+    %body{:"data-date-format" => t("date.js_format")}
+    
+Will result in this broken output:
+
+    <body data-date-format="dd.mm.yyyy--date.js_format--">
+
+In those cases you need to pass an additional parameter `:i18n_viz => false` to the translate method in order to not append the key.
+
+Example:
+
+    %body{:"data-date-format" => t("date.js_format", :i18n_viz => false)}
+    
+    -----
+    
+    <body data-date-format="dd.mm.yyyy">
+
+
+
+
 ### License
 
 This project is under MIT-LICENSE.
