@@ -4,7 +4,7 @@ pkg/
 test/dummy/db/*.sqlite3
 test/dummy/log/*.log
 test/dummy/tmp/
+test/dummy/.sass-cache
 Gemfile.lock
-*.sublime-project
-*.sublime-workspace
+*.sublime-*
 .rvmrc
