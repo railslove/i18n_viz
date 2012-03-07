@@ -9,5 +9,5 @@ module I18nViz
 end
 
 require 'i18n_viz/view_helpers'
-require 'i18n_viz/rails'
+require 'i18n_viz/engine'
 
