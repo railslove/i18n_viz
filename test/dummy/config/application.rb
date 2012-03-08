@@ -4,6 +4,8 @@ require 'rails/all'
 
 Bundler.require
 require "i18n_viz"
+require "jquery-rails"
+require "coffee_script"
 
 module Dummy
   class Application < Rails::Application
