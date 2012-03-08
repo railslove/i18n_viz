@@ -1,5 +1,5 @@
 /* line 4, ../../../app/stylesheets/i18n-viz.sass */
-#i18n-viz-tooltip {
+#i18n_viz_tooltip {
   display: none;
   position: absolute;
   top: 100px;
@@ -21,11 +21,11 @@
   padding: 10px;
 }
 /* line 14, ../../../app/stylesheets/i18n-viz.sass */
-#i18n-viz-tooltip a, #i18n-viz-tooltip span {
+#i18n_viz_tooltip a, #i18n_viz_tooltip span {
   margin-right: 10px;
 }
 /* line 16, ../../../app/stylesheets/i18n-viz.sass */
-#i18n-viz-tooltip a:last-child, #i18n-viz-tooltip span:last-child {
+#i18n_viz_tooltip a:last-child, #i18n_viz_tooltip span:last-child {
   margin-right: 0;
 }
 
