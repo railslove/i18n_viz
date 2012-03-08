@@ -15,7 +15,6 @@ module I18nViz
       return unless display_i18n_viz?
       
       stylesheet_link_tag("i18n_viz")
-      javascript_tag "var i18n_viz_key_url = '#{I18nViz.key_url}';"
       javascript_include_tag "i18n_viz"
     end
 
