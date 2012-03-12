@@ -6,6 +6,8 @@ source "http://rubygems.org"
 gemspec
 
 group :test do
+  gem "rake"
+
   # used by the dummy application
   gem "jquery-rails"
   gem "coffee-script"
@@ -13,6 +15,9 @@ group :test do
   # testing libraries
   gem "capybara"
   gem "capybara-webkit"
+end
+
+group :development do
   gem "launchy" # debugging
 end
 
