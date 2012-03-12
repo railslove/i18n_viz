@@ -21,7 +21,7 @@ class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
 
-  Capybara.javascript_driver = :webkit
+  Capybara.javascript_driver = :selenium
 
   teardown do
     Capybara.reset_sessions!    # Forget the (simulated) browser state
