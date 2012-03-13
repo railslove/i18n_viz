@@ -7,6 +7,8 @@ gemspec
 
 group :test do
   gem "rake"
+  gem "activesupport"
+  gem "tzinfo"
 
   # used by the dummy application
   gem "jquery-rails"
@@ -14,7 +16,7 @@ group :test do
 
   # testing libraries
   gem "capybara"
-  gem "capybara-webkit"
+  #gem "capybara-webkit"
 end
 
 group :development do
