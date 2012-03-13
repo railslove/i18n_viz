@@ -1,5 +1,5 @@
 module I18nViz
-  mattr_accessor :key_url, :enabled
+  mattr_accessor :external_tool_url, :enabled
   
   @@enabled = true
   

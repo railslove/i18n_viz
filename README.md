@@ -73,7 +73,7 @@ E.g. `config/initializers/i18n_viz.rb`:
       # Link to display in the I18nViz tooltip
       # e.g. pointing to that particular string in your apps translation tool
       # the i18n key will be appended to that URL
-      I18nViz.key_url = "https://webtranslateit.com/en/projects/1234567/locales/en..de/strings?utf8=✓&s="
+      I18nViz.external_tool_url = "https://webtranslateit.com/en/projects/1234567/locales/en..de/strings?utf8=✓&s="
     end
 
 
