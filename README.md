@@ -1,5 +1,7 @@
 # I18nViz
 
+[![Build Status](https://secure.travis-ci.org/jhilden/i18n_viz.png?branch=master)](http://travis-ci.org/jhilden/i18n_viz)
+
 Gem to visualize i18n strings within a rails project.
 
 **Problem**:
