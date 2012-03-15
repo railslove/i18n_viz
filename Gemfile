@@ -16,7 +16,6 @@ group :test do
 
   # testing libraries
   gem "capybara"
-  #gem "capybara-webkit"
 end
 
 group :development do
@@ -27,6 +26,3 @@ end
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
