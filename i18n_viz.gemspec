@@ -13,6 +13,6 @@ Gem::Specification.new do |s|
   s.summary     = "Visualize i18n strings alongside their keys within the frontend of internationalized Rails/Ruby web applications."
   #s.description = "TODO: Description of I18nViz."
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README"]
   s.test_files = Dir["test/**/*"]
 end
