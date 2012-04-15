@@ -18,6 +18,12 @@ group :test do
   gem "capybara"
 end
 
+group :assets do
+  gem 'therubyracer'
+  gem 'coffee-rails'
+  gem 'uglifier'
+end
+
 group :development do
   gem "launchy" # debugging
 end
