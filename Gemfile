@@ -14,6 +14,8 @@ group :test do
   gem "jquery-rails"
   gem "coffee-script"
 
+  gem "evergreen"
+
   # testing libraries
   gem "capybara"
 end
