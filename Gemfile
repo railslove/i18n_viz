@@ -11,6 +11,7 @@ group :test do
   gem "tzinfo"
 
   # used by the dummy application
+  gem "rails"
   gem "jquery-rails"
   gem "coffee-script"
 
