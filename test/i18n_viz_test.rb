@@ -1,6 +1,5 @@
 require 'test_helper'
 
-# capybara
 class I18nVizIntegrationTest < ActionDispatch::IntegrationTest
   test 'translate without i18n_viz url parameter' do
     visit "/test"
