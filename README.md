@@ -40,23 +40,34 @@ And run
 
 ##### 2. Include the assets
 
-I18nVIz is build as a Rails::Engine, which allows it provide its assets directly to the Rails asset pipeline for requirement in the app.  Therefore, if you have a Rails 3.1+ app and are using the asset pipeline, you can just add these simple lines to your asset pipeline manifest files to include them in your app:
+I18nVIz is build as a Rails::Engine, which allows it provide its assets directly to the Rails asset pipeline for inclusion in your app.  Therefore, if you have a Rails 3.1+ app and are using the asset pipeline, you can include the I18nViz assets very easily:
 
-In `app/assets/javascripts/application.js`:
+Either you add the following line to your asset pipeline manifest file (`app/assets/javascripts/application.js`):
 
     // = require i18n_viz
-    
 
-In `app/assets/stylesheets/application.js`:
+Or, you turn your manifest file into an `.erb` template (`app/assets/javascripts/application.js.erb`) and this code:
+
+   <% require_asset("i18n_viz")  if I18nViz.enabled? %>
+
+This ensures that the asset will only be included if the I18nViz gem is enabled and makes most sense in combination with an initializer (see below) that enables the gem based on the enviornment.
+
+!Gotcha:  You need to leave a blank line between your asset pipeline directives (`require`, `require_tree`, ...) and the erb line above, otherwise it will NOT work!
+    
+For the stylesheet is is very similar, either you you add a simple directive in your manifest (`app/assets/stylesheets/application.js`):
 
     /* = require i18n_viz.css */
-    
-Or if you are using SASS, something like:
 
-    @import "i18n_viz"
+Or you turn it into an `erb` template (`app/assets/stylesheets/application.css.erb`) and add this at the top of the file:
+
+    <% require_asset "i18n_viz"  if I18nViz.enabled? %>
+    
+<!--Or if you are using SASS, something like:
+
+    @import "i18n_viz"-->
     
     
-If you are not using Rails 3.1+ and the asset pipeline you will need to compile the Coffeescript to Javascript and copy and include the assets in the right places.  If there is demand for it I might provide some more comfortable way of doing this.
+If you are not using Rails 3.1+ and the asset pipeline you will need to compile the Coffeescript to Javascript and copy and include the assets in the right places.  If there should be demand for it I might provide some more comfortable way of doing this.
 
 
 #### 3. Create initializer (optional)
