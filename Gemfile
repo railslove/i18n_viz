@@ -7,7 +7,6 @@ gemspec
 
 group :test do
   gem "rake"
-  gem "activesupport"
   gem "tzinfo"
 
   # used by the dummy application
