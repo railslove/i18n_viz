@@ -13,5 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 
-<% require "#{Rails.root}/config/initializers/i18n_viz.rb"  unless defined?(I18nViz).nil? %>
-<% require_asset "i18n_viz"  if I18nViz.enabled? %>
+<% require_asset "i18n_viz"  unless Rails.env.production? %>

@@ -1,4 +1,4 @@
-<% require_asset "i18n_viz"  if I18nViz.enabled? %>
+<% require_asset "i18n_viz"  unless Rails.env.production? %>
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
