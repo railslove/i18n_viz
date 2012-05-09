@@ -28,11 +28,22 @@ Bundler::GemHelper.install_tasks
 
 require 'rake/testtask'
 
+task :js_tests do
+  system("cd test/dummy")
+  system("RAILS_ENV=test rake assets:precompile")
+  system("cd ../..")
+  system("evergreen run")
+  system("cd test/dummy")
+  system("RAILS_ENV=test rake assets:clean")
+end
+
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
   t.libs << 'test'
   t.pattern = 'test/**/*_test.rb'
   t.verbose = false
+
+  Rake::Task[:js_tests].invoke
 end
 
 task :travis do

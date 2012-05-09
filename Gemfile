@@ -14,10 +14,10 @@ group :test do
   gem "jquery-rails"
   gem "coffee-script"
 
-  gem "evergreen"
-
   # testing libraries
   gem "capybara"
+  gem "evergreen"
+  gem "capybara-webkit"
 end
 
 group :assets do
