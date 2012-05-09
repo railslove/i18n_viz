@@ -28,6 +28,7 @@ end
 
 group :development do
   gem "launchy" # debugging
+  gem "compass"
 end
 
 # Declare any dependencies that are still in development here instead of in

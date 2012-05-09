@@ -8,3 +8,4 @@ test/dummy/.sass-cache
 Gemfile.lock
 *.sublime-*
 .rvmrc
+.sass-cache
