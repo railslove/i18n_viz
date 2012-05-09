@@ -43,7 +43,7 @@ Rake::TestTask.new(:test) do |t|
   t.pattern = 'test/**/*_test.rb'
   t.verbose = false
 
-  Rake::Task[:js_tests].invoke
+  #Rake::Task[:js_tests].invoke
 end
 
 task :travis do
