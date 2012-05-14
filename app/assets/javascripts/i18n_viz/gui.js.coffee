@@ -44,7 +44,7 @@ $(document).ready () ->
     input_value         = $i18n_input_element.val()
     placeholder_value   = $i18n_input_element.attr('placeholder')
 
-    i18n_keys = extractI18nKeysFromText(input_value + placeholder_value)
+    i18n_keys = window.I18nViz.extractI18nKeysFromText(input_value + placeholder_value)
 
     $i18n_input_element.enrichWithI18nData(i18n_keys)
     
