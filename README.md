@@ -20,54 +20,52 @@ More features (like inline editing) are possible in the future.
 
 ## Requirements
 
-i18n_viz.js currently depends on jQuery being already loaded in your app (Tested with jQuery 1.6.1, but should also work with other versions)
 
-In a Rails 3.1+ application you should simply include `gem 'jquery-rails'` in your Gemfile and your asset pipeline manifest.
+* i18n gem
+* jQuery (tested with 1.6.x and 1.7.x)
+* Rails 3.1+
+* CoffeeScript
 
+However, with a little bit of manual work, you should be able to get the whole thing to run without Rails and CoffeeScript.  Just let me know if you need help.
 
 ## Installation
 
 ##### 1. Install the gem
 
-Add the `i18n_viz` to your Gemfile
-
-    gem 'i18n_viz'
-
-And run
-
-    bundle install
+Add the fullowing line to your `Gemfile` and run `bundle install`:
 
 
 ##### 2. Include the assets
 
-I18nVIz is build as a Rails::Engine, which allows it provide its assets directly to the Rails asset pipeline for inclusion in your app.  Therefore, if you have a Rails 3.1+ app and are using the asset pipeline, you can include the I18nViz assets very easily:
+You need to include the JavaScript(CoffeeScript) and CSS assets in your app in the environment where you want to use the gem.  There are several ways to do it.  Here I describe two ways of doing it with the Rails asset pipeline:
 
-Either you add the following line to your asset pipeline manifest file (`app/assets/javascripts/application.js`):
+Either you can simply require the assets in your manifest files:
+
+`app/assets/javascripts/application.js`:
 
     // = require i18n_viz
-
-Or, you turn your manifest file into an `.erb` template (`app/assets/javascripts/application.js.erb`) and this code:
-
-   <% require_asset("i18n_viz")  if I18nViz.enabled? %>
-
-This ensures that the asset will only be included if the I18nViz gem is enabled and makes most sense in combination with an initializer (see below) that enables the gem based on the enviornment.
-
-!Gotcha:  You need to leave a blank line between your asset pipeline directives (`require`, `require_tree`, ...) and the erb line above, otherwise it will NOT work!
     
-For the stylesheet is is very similar, either you you add a simple directive in your manifest (`app/assets/stylesheets/application.js`):
+    
+`app/assets/stylesheets/application.css`:
 
     /* = require i18n_viz.css */
-
-Or you turn it into an `erb` template (`app/assets/stylesheets/application.css.erb`) and add this at the top of the file:
-
-    <% require_asset "i18n_viz"  if I18nViz.enabled? %>
     
-<!--Or if you are using SASS, something like:
+Or, if you don't want use the gem in production mode (which makes lots of sense), you can turn your manifest files into ERB templates by adding the `.erb` file extension and only include the assets in non-production environments:
 
-    @import "i18n_viz"-->
-    
-    
-If you are not using Rails 3.1+ and the asset pipeline you will need to compile the Coffeescript to Javascript and copy and include the assets in the right places.  If there should be demand for it I might provide some more comfortable way of doing this.
+
+`app/assets/javascripts/application.js.erb`:
+
+    <% require_asset "i18n_viz"  unless Rails.env.production? %>
+
+`app/assets/stylesheets/application.css.erb`:
+
+    <% require_asset "i18n_viz"  unless Rails.env.production? %>
+
+
+!**Gotcha**:  You need to leave a blank line between your asset pipeline directives (`// require`, `// require_tree`, ...) and the erb line above, otherwise it will NOT work!
+
+
+If you are not using the asset pipeline, you will need to manually copy over the assets.
 
 
 #### 3. Create initializer (optional)
@@ -78,12 +76,12 @@ E.g. `config/initializers/i18n_viz.rb`:
 
     # encoding: utf-8
     unless defined?(I18nViz).nil?
-      # determine under which condition the gem should be active
+      # determine under which condition the gem should be active (e.g. only in non-production environments)
       I18nViz.enabled = !Rails.env.production?
         
       # Link to display in the I18nViz tooltip
-      # e.g. pointing to that particular string in your apps translation tool
-      # the i18n key will be appended to that URL
+      # e.g. pointing to that particular string in your apps translation tool (webtranslateit.com, localeapp.com, ...)
+      # the i18n key will be appended to this URL
       I18nViz.external_tool_url = "https://webtranslateit.com/en/projects/1234567/locales/en..de/strings?utf8=✓&s="
     end
 
