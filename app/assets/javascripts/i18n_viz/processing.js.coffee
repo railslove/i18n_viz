@@ -9,12 +9,13 @@ window.I18nViz.extractI18nKeysFromText = (text) ->
 
 # enrich elements with i18n attributes, classes
 $.fn.enrichWithI18nData = () ->
-  i18n_keys = window.I18nViz.extractI18nKeysFromText $(this).text()
+  $i18n_element = $(this)
+  i18n_keys = window.I18nViz.extractI18nKeysFromText $i18n_element.text()
   if i18n_keys != null
-    $(this)
+    $i18n_element
       .addClass("i18n-viz")
       .data("i18n-keys", i18n_keys)
-  $(this)
+  $i18n_element
 
 # clear i18n data from element text
 $.fn.clearI18nText = () ->
