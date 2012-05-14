@@ -18,22 +18,23 @@
   background-image: -ms-linear-gradient(#ffffff, #f5f5f5);
   background-image: linear-gradient(#ffffff, #f5f5f5);
   padding: 10px;
+  z-index: 999;
 }
-/* line 14, ../../../sass/i18n_viz.css.sass */
+/* line 15, ../../../sass/i18n_viz.css.sass */
 #i18n_viz_tooltip a, #i18n_viz_tooltip span {
   margin-right: 10px;
 }
-/* line 16, ../../../sass/i18n_viz.css.sass */
+/* line 17, ../../../sass/i18n_viz.css.sass */
 #i18n_viz_tooltip a:last-child, #i18n_viz_tooltip span:last-child {
   margin-right: 0;
 }
 
-/* line 19, ../../../sass/i18n_viz.css.sass */
+/* line 20, ../../../sass/i18n_viz.css.sass */
 .i18n-viz {
   cursor: help;
   background: lightyellow !important;
 }
-/* line 22, ../../../sass/i18n_viz.css.sass */
+/* line 23, ../../../sass/i18n_viz.css.sass */
 .i18n-viz:hover {
   color: black;
   background: yellow !important;
