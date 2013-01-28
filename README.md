@@ -86,6 +86,9 @@ E.g. `config/initializers/i18n_viz.rb`:
       I18nViz.external_tool_url = "https://webtranslateit.com/en/projects/1234567/locales/en..de/strings?utf8=✓&s="
     end
 
+#### 4. Browse to http://localhost:3000?i18n_viz=true
+
+Add the `i18n_viz=true` parameter to visualize the translatable segments.
 
 # How it works
 
