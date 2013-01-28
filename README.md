@@ -34,6 +34,7 @@ However, with a little bit of manual work, you should be able to get the whole t
 
 Add the following line to your `Gemfile` and run `bundle install`:
 
+    gem 'i18n_viz'
 
 ##### 2. Include the assets
 
