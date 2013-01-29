@@ -6,7 +6,7 @@ Gem to visualize i18n strings within a rails/ruby project.
 
 **Problem**:
 
-It is ver difficult for non-developers (e.g. translators and product managers) working with i18n Rails apps to make the connection from a string within the app to the correct i18n key to edit the corresponding translation.  "I would like to tweak the wording of the subtitle on this page, what string do I need to edit?"
+It is very difficult for non-developers (e.g. translators and product managers) working with i18n Rails apps to make the connection from a string within the app to the correct i18n key to edit the corresponding translation.  "I would like to tweak the wording of the subtitle on this page, what string do I need to edit?"
 
 **Solution**:
 
@@ -32,12 +32,13 @@ However, with a little bit of manual work, you should be able to get the whole t
 
 ##### 1. Install the gem
 
-Add the fullowing line to your `Gemfile` and run `bundle install`:
+Add the following line to your `Gemfile` and run `bundle install`:
 
+    gem 'i18n_viz'
 
 ##### 2. Include the assets
 
-You need to include the JavaScript(CoffeeScript) and CSS assets in your app in the environment where you want to use the gem.  There are several ways to do it.  Here I describe two ways of doing it with the Rails asset pipeline:
+You need to include the JavaScript (CoffeeScript) and CSS assets in your app in the environment where you want to use the gem.  There are several ways to do it.  Here I describe two ways of doing it with the Rails asset pipeline:
 
 Either you can simply require the assets in your manifest files:
 
@@ -70,7 +71,7 @@ If you are not using the asset pipeline, you will need to manually copy over the
 
 #### 3. Create initializer (optional)
 
-In order to provide some custom setting for the I18nViz gem, it might make sense to create and initializer.
+In order to provide some custom setting for the I18nViz gem, it might make sense to create an initializer.
 
 E.g. `config/initializers/i18n_viz.rb`:
 
@@ -85,6 +86,9 @@ E.g. `config/initializers/i18n_viz.rb`:
       I18nViz.external_tool_url = "https://webtranslateit.com/en/projects/1234567/locales/en..de/strings?utf8=✓&s="
     end
 
+#### 4. Browse to http://localhost:3000?i18n_viz=true
+
+Add the `i18n_viz=true` parameter to visualize the translatable segments.
 
 # How it works
 
