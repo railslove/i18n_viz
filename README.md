@@ -12,7 +12,7 @@ It is very difficult for non-developers (e.g. translators and product managers) 
 
 My solution is to hack the i18n keys into the frontend, so that the keys can be displayed as nice overlay tooltips on top of their strings right within the app.
 
-If you you use a translation management app, such as http://webtranslateit.com, you get the additional benefit of clickable links that point you right to the correct string to edit within the translation tool.
+If you you use a translation management app, such as http://webtranslateit.com or https://lingohub.com, you get the additional benefit of clickable links that point you right to the correct string to edit within the translation tool.
 
 More features (like inline editing) are possible in the future.
 
