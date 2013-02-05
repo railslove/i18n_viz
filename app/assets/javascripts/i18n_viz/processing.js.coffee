@@ -19,9 +19,10 @@ $.fn.enrichWithI18nData = () ->
 
 # clear i18n data from element text
 $.fn.clearI18nText = () ->
-  $(this).textNodes().each () ->
-    $(this).replaceWith $(this).text().replace(I18nViz.global_regex, "")
-  $(this)
+  $el = $(this)
+  $el.textNodes().each () ->
+    $el.text $el.text().replace(I18nViz.global_regex, "")
+  $el
 
 # custom :i18n selectors
 $.extend $.expr[':'], {
