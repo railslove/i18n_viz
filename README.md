@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/jhilden/i18n_viz.png?branch=master)](http://travis-ci.org/jhilden/i18n_viz)
 
-Gem to visualize i18n strings within a rails/ruby project.
+Gem to visualize i18n strings within anay rails/ruby project using the commonly used [i18n](https://github.com/svenfuchs/i18n) gem.
 
 **Problem**:
 
@@ -12,21 +12,17 @@ It is very difficult for non-developers (e.g. translators and product managers) 
 
 My solution is to hack the i18n keys into the frontend, so that the keys can be displayed as nice overlay tooltips on top of their strings right within the app.
 
-If you you use a translation management app, such as http://webtranslateit.com or https://lingohub.com, you get the additional benefit of clickable links that point you right to the correct string to edit within the translation tool.
-
-More features (like inline editing) are possible in the future.
-
+If you you use a translation management service, such as http://webtranslateit.com, https://lingohub.com, http://localeapp.com/, you get the additional benefit of clickable links that point you right to the correct string to edit within your translation tool.
 
 
 ## Requirements
 
-
-* i18n gem
-* jQuery (tested with 1.6.x and 1.7.x)
+* [i18n](https://github.com/svenfuchs/i18n) gem
+* jQuery
 * Rails 3.1+
 * CoffeeScript
 
-However, with a little bit of manual work, you should be able to get the whole thing to run without Rails and CoffeeScript.  Just let me know if you need help.
+However, with just a little bit of manual work, you should be able to get the whole thing to run without Rails and CoffeeScript.  Just let me know if you need help.
 
 ## Installation
 
@@ -51,7 +47,7 @@ Either you can simply require the assets in your manifest files:
 
     /* = require i18n_viz.css */
     
-Or, if you don't want use the gem in production mode (which makes lots of sense), you can turn your manifest files into ERB templates by adding the `.erb` file extension and only include the assets in non-production environments:
+Or, if you don't want use the gem in production mode (which does makes some sense), you can turn your manifest files into ERB templates by adding the `.erb` file extension and only include the assets in non-production environments:
 
 
 `app/assets/javascripts/application.js.erb`:
@@ -66,10 +62,7 @@ Or, if you don't want use the gem in production mode (which makes lots of sense)
 !**Gotcha**:  You need to leave a blank line between your asset pipeline directives (`// require`, `// require_tree`, ...) and the erb line above, otherwise it will NOT work!
 
 
-If you are not using the asset pipeline, you will need to manually copy over the assets.
-
-
-#### 3. Create initializer (optional)
+#### 3. Create an initializer (optional)
 
 In order to provide some custom setting for the I18nViz gem, it might make sense to create an initializer.
 
@@ -90,16 +83,18 @@ E.g. `config/initializers/i18n_viz.rb`:
 
 Add the `i18n_viz=true` parameter to visualize the translatable segments.
 
-# How it works
 
-The gem works by overwriting the t() and translate() helpers in your rails app to add the key of the i18n string after the actual translated content:
+
+## How it works
+
+The gem works by overwriting the `t()` and `translate()` helpers in your rails app to add the key of the i18n string after the actual translated content:
 
     en:
       examples:
         my_string: "My internationalized string"
         foo: "bar"
         
-    =%span= "#{t("examples.my_string")} : #{t("examples.foo")}" 
+    %span= "#{t("examples.my_string")} : #{t("examples.foo")}" 
     
 Will result in
 
@@ -116,14 +111,26 @@ The so enriched elements then get nice little tooltips attached with the i18n ke
 
 #### Works only in the view layer
 
-The keys will currently only work for strings that are translated in the view layer using the `translate()` and `t()` i18n view helpers.  If you translate a string the model layer using `I18n.translate` method directly (e.g. ActiveRecord validations) the keys are not displayed in the frontend.
+The keys will currently only work for strings that are translated in the view layer using the `translate()` and `t()` i18n view helpers.  If you translate a string the model layer using `I18n.translate` method directly (e.g. in ActiveRecord validations) the keys are not displayed in the frontend.
 
 
-#### Assigning I18n output to variables
+#### Disable i18n_viz if you require certain strings to remain untouched
 
-If you should be assigning i18n output directly into variables (e.g. within inline javascript, JS data-attributes, or other variables), the whole `--key--` thing might actually break your application.
+For certain special strings within your app, the added `--key--` could potentially break your custom logic.  For those cases you need to call the `t()` method the additional `i18n_viz: false` parameter.
 
-For example this usage of a data-attribute:
+Example cases include:
+
+**Iterating overy keys**
+
+    de:
+      types:
+        foo: "Foo"
+        bar: "Bar"
+
+    - t("types").each do |key, string|
+        .. do something wit the key ..
+
+**JS data-attributes**
 
     de:
       date:
@@ -136,22 +143,12 @@ Will result in this broken output:
 
     <body data-date-format="dd.mm.yyyy--date.js_format--">
 
-In those cases you need to pass an additional parameter `:i18n_viz => false` to the translate method in order to not append the key.
 
-Example:
-
-    %body{:"data-date-format" => t("date.js_format", :i18n_viz => false)}
-    
-    -----
-    
-    <body data-date-format="dd.mm.yyyy">
-
-
-# Thanks
+## Thanks
 
 Big thanks to my employer [Railslove](http://railslove.com) for supporting my open source work and to everybody who helped me.
 
 
-### License
+## License
 
 This project is under MIT-LICENSE.
