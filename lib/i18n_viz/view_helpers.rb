@@ -4,7 +4,11 @@ module I18nViz
     def translate(key, options = {}) # TODO: alias
       if display_i18n_viz? && options[:i18n_viz] != false
         # TODO: ActionController::Base.perform_caching = false  if ActionController::Base.perform_caching == true
-        "#{super(key, options)}--#{key}--"
+        if !options[:scope].blank? 
+          "#{super(key, options)}--#{options[:scope].to_s}.#{key}--"
+        else
+          "#{super(key, options)}--#{key}--"
+        end
       else
         super(key, options)
       end
