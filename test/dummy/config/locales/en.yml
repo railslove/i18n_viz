@@ -4,3 +4,5 @@
 en:
   hello: "Hello world"
   foo: "bar"
+  scope:
+    bar: "foo"

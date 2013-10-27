@@ -18,6 +18,8 @@ class I18nVizIntegrationTest < ActionDispatch::IntegrationTest
 
     assert page.has_content?("bar")
     assert !page.has_content?("--foo--")
+   
+    assert page.has_content?("foo")
   end
 
   test 'disable I18nViz' do
