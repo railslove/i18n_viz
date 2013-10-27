@@ -106,10 +106,12 @@ The i18n_viz Javascript then parses this and enriches it into:
     
 The so enriched elements then get nice little tooltips attached with the i18n keys and possibly links to where they can be found/changed.
 
-## Translations with :scope option
+#### Translations with :scope option
   
 Sometimes you don't want to manualy add scope to each of you translations in view template, and just pass scope. 
+    
     t('contact', :scope => :menu) results with 'menu.contact' key. 
+
 This gem will correctly read this key and display 'menu.contact' in the tooltip. 
 
 ## Gotchas & Limitations
