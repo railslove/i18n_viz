@@ -24,6 +24,7 @@ group :assets do
   gem 'therubyracer'
   gem 'coffee-rails'
   gem 'uglifier'
+  gem 'sprockets-rails'
 end
 
 group :development do
