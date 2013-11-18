@@ -1,3 +1,3 @@
 Dummy::Application.routes.draw do
-  match '/test' => 'test#test'
+  get '/test' => 'test#test'
 end

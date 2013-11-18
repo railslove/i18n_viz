@@ -18,6 +18,8 @@ class I18nVizIntegrationTest < ActionDispatch::IntegrationTest
 
     assert page.has_content?("bar")
     assert !page.has_content?("--foo--")
+   
+    assert page.has_content?("foo")
   end
 
   test 'disable I18nViz' do
@@ -45,6 +47,7 @@ class I18nVizJavascriptIntegrationTest < ActionDispatch::IntegrationTest
 
     assert !page.has_content?("--hello--") # should be removed by js
     assert page.has_css?(".i18n-viz")
+    save_and_open_page
     assert page.has_css?("#i18n_viz_tooltip")
   end
 end

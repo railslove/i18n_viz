@@ -1,3 +1,8 @@
+## 0.3.3
+
+* [bugfix] tooltip displays correct key for translations that are using :scope option 
+* [improvement] update test app routes to work with rails 4
+
 ## 0.3.2
 
 * [bugfix] i18n key meta information wasn't cleared correctly from element's text

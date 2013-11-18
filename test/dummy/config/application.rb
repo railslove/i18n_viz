@@ -8,7 +8,7 @@ require "rails/test_unit/railtie"
 require "sprockets/railtie"
 
 
-Bundler.require
+Bundler.require(:default, Rails.env)
 require "i18n_viz"
 require "jquery-rails"
 require "coffee_script"
