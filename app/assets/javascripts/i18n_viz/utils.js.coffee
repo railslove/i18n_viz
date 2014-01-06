@@ -8,4 +8,4 @@ $.fn.textNodes = () ->
       catch err
         false
   catch e
-    []
+    $([])
