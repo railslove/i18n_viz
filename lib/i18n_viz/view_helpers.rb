@@ -7,7 +7,7 @@ module I18nViz
         if !options[:scope].blank? 
           "#{super(key, options)}--#{options[:scope].to_s}.#{key}--"
         else
-          "#{super(key, options)}--#{key}--"
+          "#{super(key, options)}--#{scope_key_by_partial(key)}--"
         end
       else
         super(key, options)
