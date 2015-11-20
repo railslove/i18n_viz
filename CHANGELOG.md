@@ -1,4 +1,4 @@
-## 0.3.3
+## 0.4.0
 
 * [bugfix] tooltip displays correct key for translations that are using :scope option 
 * [improvement] update test app routes to work with rails 4
