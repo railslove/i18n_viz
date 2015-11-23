@@ -1,6 +1,7 @@
 ## 0.4.0
 
-* [bugfix] tooltip displays correct key for translations that are using :scope option 
+* [bugfix] tooltip displays correct key for translations that are using :scope option
+* [bugfix] catch error when contents method raises exception
 * [improvement] update test app routes to work with rails 4
 
 ## 0.3.2
