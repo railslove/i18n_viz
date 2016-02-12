@@ -18,6 +18,7 @@ group :test do
   gem "capybara"
   gem "evergreen"
   gem "capybara-webkit"
+  gem 'selenium-webdriver'
 end
 
 group :assets do
