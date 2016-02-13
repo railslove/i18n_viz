@@ -5,9 +5,9 @@ module I18nViz
       if display_i18n_viz? && options[:i18n_viz] != false
         # TODO: ActionController::Base.perform_caching = false  if ActionController::Base.perform_caching == true
         if !options[:scope].blank? 
-          "#{super(key, options)}--#{options[:scope].to_s}.#{key}--"
+          "#{super(key, options)}--#{options[:scope].to_s}.#{scope_key_by_partial(key)}--"
         else
-          "#{super(key, options)}--#{key}--"
+          "#{super(key, options)}--#{scope_key_by_partial(key)}--"
         end
       else
         super(key, options)
