@@ -62,6 +62,10 @@ module Dummy
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.middleware.use(I18nViz::Middleware) do |viz|
+      viz.external_tool_url = "https://webtranslateit.com/en/projects/xxx/locales/en..de/strings?utf8=✓&s="
+    end
   end
 end
 

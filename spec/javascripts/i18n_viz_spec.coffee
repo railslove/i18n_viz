@@ -1,7 +1,7 @@
-require "/application.js"
+require "/javascripts/jquery.js"
+require "/javascripts/i18n_viz.js"
 
 describe "extractI18nKeysFromText()", () ->
-
   it "should return i18n key when 1 present", () ->
     expect(window.I18nViz.extractI18nKeysFromText("some text --i18n.key--")).toEqual(["i18n.key"])
 
