@@ -27,14 +27,15 @@ load 'rails/tasks/engine.rake'
 Bundler::GemHelper.install_tasks
 
 require 'rake/testtask'
+require 'evergreen'
 
-task :js_tests do
-  system("cd test/dummy")
-  system("RAILS_ENV=test rake assets:precompile")
-  system("cd ../..")
-  system("evergreen run")
-  system("cd test/dummy")
-  system("RAILS_ENV=test rake assets:clean")
+namespace :spec do
+  desc "Run JavaScript specs via Evergreen"
+  task :javascripts => :environment do
+    Evergreen.root = File.expand_path('.')
+    result = Evergreen::Runner.new.run
+    Kernel.exit(1) unless result
+  end
 end
 
 Rake::TestTask.new(:test) do |t|
