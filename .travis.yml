@@ -1,5 +1,6 @@
 sudo: false
 language: ruby
+script: rake test spec:javascripts
 rvm:
   - 1.9.3
   - 2.2.4

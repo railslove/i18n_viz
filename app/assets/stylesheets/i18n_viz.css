@@ -1,4 +1,3 @@
-/* line 4, ../../../sass/i18n_viz.css.sass */
 #i18n_viz_tooltip {
   display: none;
   position: absolute;
@@ -19,24 +18,21 @@
   padding: 10px;
   z-index: 999;
 }
-/* line 15, ../../../sass/i18n_viz.css.sass */
 #i18n_viz_tooltip a, #i18n_viz_tooltip span {
   margin-right: 10px;
   color: #111111;
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 12px;
 }
-/* line 20, ../../../sass/i18n_viz.css.sass */
 #i18n_viz_tooltip a:last-child, #i18n_viz_tooltip span:last-child {
   margin-right: 0;
 }
 
-/* line 23, ../../../sass/i18n_viz.css.sass */
 .i18n-viz {
   cursor: help;
   background: lightyellow !important;
 }
-/* line 26, ../../../sass/i18n_viz.css.sass */
+
 .i18n-viz:hover {
   color: black;
   background: yellow !important;

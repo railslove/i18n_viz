@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'test_helper'
 
 class I18nVizIntegrationTest < ActionDispatch::IntegrationTest
@@ -6,27 +7,23 @@ class I18nVizIntegrationTest < ActionDispatch::IntegrationTest
 
     assert !page.has_content?("--hello--")
     assert !page.has_css?("#i18n_viz_tooltip")
+    assert !page.has_selector?("body > script", visible: false)
+    assert !page.has_selector?("body > style", visible: false)
   end
 
   test 'translate with i18n_viz url parameter' do
-    I18nViz.enabled = true
     visit "/test?i18n_viz=1"
 
+    assert page.has_selector? "body > script", visible: false
+    assert page.has_selector?("body > style", visible: false)
     assert page.has_content?("--hello--")
     assert !page.has_css?(".i18n-viz")
     assert !page.has_css?("#i18n_viz_tooltip")
 
     assert page.has_content?("bar")
     assert !page.has_content?("--foo--")
-   
+
     assert page.has_content?("foo")
-  end
-
-  test 'disable I18nViz' do
-    I18nViz.enabled = false
-    visit "/test?i18n_viz=1"
-
-    assert !page.has_content?("--hello--")
   end
 end
 
@@ -50,6 +47,7 @@ class I18nVizJavascriptIntegrationTest < ActionDispatch::IntegrationTest
 
     first('.i18n-viz').hover
 
+    assert page.has_link?('hello', :href => "https://webtranslateit.com/en/projects/xxx/locales/en..de/strings?utf8=✓&s=hello")
     assert page.has_css?("#i18n_viz_tooltip")
   end
 end
