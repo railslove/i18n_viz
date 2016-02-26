@@ -1,7 +1,7 @@
 module I18nViz
   class Middleware
-    JS  = File.read(File.join(File.dirname(__FILE__), '..', '..', 'app', 'assets', 'javascripts', 'i18n_viz.js' ))
-    CSS = File.read(File.join(File.dirname(__FILE__), '..', '..', 'app', 'assets', 'stylesheets', 'i18n_viz.css' ))
+    JS  = File.read(File.join(File.dirname(__FILE__), '..', '..', 'assets', 'javascripts', 'i18n_viz.js' ))
+    CSS = File.read(File.join(File.dirname(__FILE__), '..', '..', 'assets', 'stylesheets', 'i18n_viz.css' ))
 
     attr_accessor :external_tool_url
     def initialize(app, &block)
