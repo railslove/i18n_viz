@@ -15,11 +15,35 @@ My solution is to hack the i18n keys into the frontend, so that the keys can be 
 If you you use a translation management service, such as http://webtranslateit.com, https://lingohub.com, http://localeapp.com/, you get the additional benefit of clickable links that point you right to the correct string to edit within your translation tool.
 
 
+## Upgrading from < 0.4.x
+
+1.0.0 was basically a whole new approach how i18n hooks into your application,
+so if you're using a version below 1.0, this is for you:
+
+### Remove JS
+If you required the i18n_viz javascript somewhere, remove it :)
+```
+// = require i18n_viz
+```
+
+### Remove CCS
+If you required the i18n_viz stylesheet somewhere, remove it :)
+```
+/* = require i18n_viz.css */
+```
+
+### Remove initializer
+
+Remove the initializer from `config/i18n_viz.rb`
+
+### THEN follow the new installation instructions
+
+
 ## Requirements
 
 * [i18n](https://github.com/svenfuchs/i18n) gem
 * jQuery
-* Rails 3.1+
+* Rails > 3.1+
 * CoffeeScript
 
 However, with just a little bit of manual work, you should be able to get the whole thing to run without Rails and CoffeeScript.  Just let me know if you need help.
