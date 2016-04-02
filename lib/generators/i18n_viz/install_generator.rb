@@ -12,6 +12,7 @@ module I18nViz
         initializer "i18n_viz.rb", %Q{
           I18nViz.enabled = !Rails.env.production?
           I18nViz.external_tool_url = "" # link to more information about each i18n key, e.g. "http://mytranslationtool.com/?key=" -- the key (e.g. 'en.foo.bar') will be appended to this URL
+          I18nViz.css_override = "" # CSS override text
         }
       end
     end
