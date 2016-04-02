@@ -3,6 +3,7 @@
 * change of plans :) no, really the complete installation has changed, this is
 now a middleware which takes care of all the css and js injection and only does
 this when `i18n_viz` is in the query string.
+* [improvement] added `I18nViz.css_override` setting
 
 ## 0.4.0
 

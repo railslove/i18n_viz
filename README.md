@@ -68,6 +68,12 @@ if you want to configure an external tool
       viz.external_tool_url = "https://webtranslateit.com/en/projects/xxx/locales/en..de/strings?utf8=✓&s="
     end
 
+if you want to configure CSS overrides
+
+    config.middleware.use(I18nViz::Middleware) do |viz|
+      viz.css_override = "/* valid CSS text here */"
+    end
+
 
 ### 3. Browse to http://localhost:3000?i18n_viz=true
 

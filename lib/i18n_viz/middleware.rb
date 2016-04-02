@@ -4,6 +4,7 @@ module I18nViz
     CSS = File.read(File.join(File.dirname(__FILE__), '..', '..', 'assets', 'stylesheets', 'i18n_viz.css' ))
 
     attr_accessor :external_tool_url
+    attr_accessor :css_override
     def initialize(app, &block)
       @app = app
 
@@ -38,7 +39,10 @@ window.I18nViz = {
 #{JS}
 </script>
 
-<style>#{CSS}</style>
+<style>
+#{CSS}
+#{css_override}
+</style>
 }
         style_and_script << m.to_s
       end
