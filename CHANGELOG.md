@@ -4,6 +4,8 @@
 now a middleware which takes care of all the css and js injection and only does
 this when `i18n_viz` is in the query string.
 
+* [bugfix] keep nested HTML tags when removing i18n keys. Fixes #9
+
 ## 0.4.0
 
 * [bugfix] tooltip displays correct key for translations that are using :scope option
