@@ -68,6 +68,8 @@ if you want to configure an external tool
       viz.external_tool_url = "https://webtranslateit.com/en/projects/xxx/locales/en..de/strings?utf8=✓&s="
     end
 
+`external_tool_url` can also be a proc/lambda if you need to configure the URL dynamically.
+
 if you want to configure CSS overrides
 
     config.middleware.use(I18nViz::Middleware) do |viz|

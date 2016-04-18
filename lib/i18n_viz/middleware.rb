@@ -28,13 +28,15 @@ module I18nViz
     def html?; @headers['Content-Type'] =~ /html/; end
 
     def inject(env, response)
+      tool_url = external_tool_url.respond_to?(:call) ? external_tool_url.call(env) : external_tool_url
+
       response.sub! %r{</body>} do |m|
         style_and_script = %Q{
 <script type='application/javascript'>
 window.I18nViz = {
   regex:             new RegExp(/--([a-z0-9_\.]+)--/i),
   global_regex:      new RegExp(/--([a-z0-9_\.]+)--/gi),
-  external_tool_url: '#{external_tool_url}'
+  external_tool_url: '#{tool_url}'
 }
 #{JS}
 </script>

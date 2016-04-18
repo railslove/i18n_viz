@@ -68,3 +68,45 @@ class I18nVizJavascriptIntegrationTest < ActionDispatch::IntegrationTest
     assert page.has_css?("#i18n_viz_tooltip")
   end
 end
+
+class I18nVizDynamicUrlTest < ActionDispatch::IntegrationTest
+  setup do
+    Capybara.current_driver = Capybara.javascript_driver # :selenium by default
+
+    # monkey patch external_tool_url
+    I18nViz::Middleware.class_eval do
+      alias orig_external_tool_url external_tool_url
+      def external_tool_url
+        lambda { |e|
+            locale = e['action_dispatch.request.parameters']['locale'] || I18n.default_locale
+            "http://example.com/#{locale}/?s="
+        }
+      end
+    end
+  end
+
+  teardown do
+    # revert monkey patch
+    I18nViz::Middleware.class_eval do
+      alias external_tool_url orig_external_tool_url
+    end
+  end
+
+  test 'dynamic external url with English locale' do
+    visit "/test?i18n_viz=1"
+
+    assert page.has_css?(".i18n-viz")
+    first('.i18n-viz').hover
+
+    assert page.has_link?('hello', :href => "http://example.com/en/?s=hello")
+  end
+
+  test 'dynamic external url with Bulgarian locale' do
+    visit "/test?i18n_viz=1&locale=bg"
+
+    assert page.has_css?(".i18n-viz")
+    first('.i18n-viz').hover
+
+    assert page.has_link?('hello', :href => "http://example.com/bg/?s=hello")
+  end
+end

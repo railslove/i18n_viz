@@ -1,0 +1,7 @@
+# Sample localization file for Bulgarian
+
+bg:
+  hello: "Здравей свят"
+  foo: "бар"
+  scope:
+    bar: "фуу"
