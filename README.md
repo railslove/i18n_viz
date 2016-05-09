@@ -79,6 +79,8 @@ if you want to configure CSS overrides
 
 Add the `i18n_viz=true` parameter to visualize the translatable segments.
 
+Alternatively, a cookie with the name `i18n_viz` can be set to any value to achieve the same effect.
+
 
 ## How it works
 
