@@ -23,7 +23,14 @@ module I18nViz
     end
 
     def display_i18n_viz?
-      params && params[:i18n_viz] rescue false # rescue workaround, because params is weirdly defined in e.g. ActionMailer
+      check_params rescue false # rescue workaround, because params is weirdly defined in e.g. ActionMailer
+    end
+
+    private
+
+    def check_params
+      return true if params && params[:i18n_viz]
+      return true if cookies && cookies[:i18n_viz]
     end
 
   end
