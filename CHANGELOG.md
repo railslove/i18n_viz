@@ -1,10 +1,13 @@
-## master
+## 1.1.0
+
+* [improvement] added the ability to use a `i18n_viz` cookie
+* [improvement] added `I18nViz.css_override` setting
+
+## 1.0.0
 
 * change of plans :) no, really the complete installation has changed, this is
 now a middleware which takes care of all the css and js injection and only does
 this when `i18n_viz` is in the query string.
-* [improvement] added `I18nViz.css_override` setting
-* [improvement] added the ability to use a `i18n_viz` cookie
 
 ## 0.4.0
 
