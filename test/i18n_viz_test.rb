@@ -25,6 +25,23 @@ class I18nVizIntegrationTest < ActionDispatch::IntegrationTest
 
     assert page.has_content?("foo")
   end
+
+  test 'translate with i18n_viz as a cookie' do
+    page.driver.browser.set_cookie("i18n_viz=true")
+
+    visit "/test"
+
+    assert page.has_selector? "body > script", visible: false
+    assert page.has_selector?("body > style", visible: false)
+    assert page.has_content?("--hello--")
+    assert !page.has_css?(".i18n-viz")
+    assert !page.has_css?("#i18n_viz_tooltip")
+
+    assert page.has_content?("bar")
+    assert !page.has_content?("--foo--")
+
+    assert page.has_content?("foo")
+  end
 end
 
 class I18nVizJavascriptIntegrationTest < ActionDispatch::IntegrationTest

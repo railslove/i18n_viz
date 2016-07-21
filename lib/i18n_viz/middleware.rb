@@ -13,7 +13,7 @@ module I18nViz
 
     def call(env)
       @status, @headers, @body = @app.call(env)
-      return [@status, @headers, @body] if !html? || !(env["QUERY_STRING"] =~ /i18n_viz/)
+      return [@status, @headers, @body] if !html? || !(env["QUERY_STRING"] =~ /i18n_viz/ || env["HTTP_COOKIE"] =~ /i18n_viz/)
 
       response = Rack::Response.new([], @status, @headers)
 
