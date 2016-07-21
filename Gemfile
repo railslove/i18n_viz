@@ -10,7 +10,7 @@ group :test do
   gem "tzinfo"
 
   # used by the dummy application
-  gem "rails"
+  gem "rails", "4.2.7"
   gem "jquery-rails"
   gem "coffee-script"
 
