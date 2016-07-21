@@ -1,3 +1,8 @@
+## 1.2.0
+
+* [improvement] using the i18n_viz cookie, you can switch i18n_viz on in a
+more permanent fashion.
+
 ## 1.1.0
 
 * [improvement] added the ability to use a `i18n_viz` cookie
