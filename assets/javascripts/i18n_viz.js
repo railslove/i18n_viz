@@ -43,8 +43,8 @@ $.fn.enrichWithI18nData = function() {
 $.fn.clearI18nText = function() {
   var $el;
   $el = $(this);
-  $el.textNodes().each(function() {
-    return $el.text($el.text().replace(I18nViz.global_regex, ""));
+  $el.textNodes().each(function(index, node) {
+    node.textContent = node.textContent.replace(I18nViz.global_regex, "");
   });
   return $el;
 };

@@ -23,6 +23,13 @@ describe "jQuery extensions", () ->
         $jquery_element.clearI18nText()
         expect($jquery_element.text()).toEqual("some text ")
 
+      it "should keep child HTML tags", () ->
+        $jquery_element.append($("<span>some more text --i18n.key2--</span>"))
+        $jquery_element.clearI18nText()
+        expect($jquery_element.text()).toEqual("some text some more text ")
+        expect($jquery_element.has('span')).toBeTruthy()
+        expect($jquery_element.find('span').text()).toEqual("some more text ")
+
     describe "$.fn.enrichWithI18nData()", () ->
       it "should enrich element with i18n data", () ->
         $jquery_element.enrichWithI18nData()
