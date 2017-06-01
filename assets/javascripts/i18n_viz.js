@@ -40,13 +40,19 @@ $.fn.enrichWithI18nData = function() {
   return $i18n_element;
 };
 
-$.fn.clearI18nText = function() {
-  var $el;
-  $el = $(this);
-  $el.textNodes().each(function(index, node) {
-    node.textContent = node.textContent.replace(I18nViz.global_regex, "");
+function clear_i18n(el) {
+  el.contents().each(function(index, node) {
+    if (node.nodeType == 3) {
+      node.textContent = node.textContent.replace(I18nViz.global_regex, "");
+    } else {
+      return clear_i18n($(node));
+    }
   });
-  return $el;
+  return el;
+};
+
+$.fn.clearI18nText = function myself() {
+  return clear_i18n($(this));
 };
 
 $.extend($.expr[':'], {

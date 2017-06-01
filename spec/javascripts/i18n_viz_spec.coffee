@@ -5,7 +5,7 @@ describe "extractI18nKeysFromText()", () ->
   it "should return i18n key when 1 present", () ->
     expect(window.I18nViz.extractI18nKeysFromText("some text --i18n.key--")).toEqual(["i18n.key"])
 
-  it "should return null with no keys present", () ->
+  it "should return all keys present", () ->
     expect(window.I18nViz.extractI18nKeysFromText("some text --i18n.key-- more text --another.key-- end")).toEqual(["i18n.key", "another.key"])
 
   it "should return null with no keys present", () ->
@@ -24,7 +24,7 @@ describe "jQuery extensions", () ->
         expect($jquery_element.text()).toEqual("some text ")
 
       it "should keep child HTML tags", () ->
-        $jquery_element.append($("<span>some more text --i18n.key2--</span>"))
+        $jquery_element.append("<span>some more text --i18n.key2--</span>")
         $jquery_element.clearI18nText()
         expect($jquery_element.text()).toEqual("some text some more text ")
         expect($jquery_element.has('span')).toBeTruthy()
