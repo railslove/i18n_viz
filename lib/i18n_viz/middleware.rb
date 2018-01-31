@@ -25,6 +25,10 @@ module I18nViz
 
     private
 
+    def javascript_code
+      File.read(File.join(File.dirname(__FILE__), '..', '..', 'assets', 'javascripts', 'i18n_viz_new.js' ))
+    end
+
     def html?; @headers['Content-Type'] =~ /html/; end
 
     def inject(env, response)
@@ -36,7 +40,7 @@ window.I18nViz = {
   global_regex:      new RegExp(/--([a-z0-9_\.]+)--/gi),
   external_tool_url: '#{external_tool_url}'
 }
-#{JS}
+#{javascript_code}
 </script>
 
 <style>
