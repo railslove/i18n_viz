@@ -1,4 +1,4 @@
-#i18n_viz_tooltip {
+.i18n_viz_tooltip {
   display: none;
   position: absolute;
   top: 100px;
@@ -18,13 +18,13 @@
   padding: 10px;
   z-index: 999;
 }
-#i18n_viz_tooltip a, #i18n_viz_tooltip span {
+.i18n_viz_tooltip a, #i18n_viz_tooltip span {
   margin-right: 10px;
   color: #111111;
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 12px;
 }
-#i18n_viz_tooltip a:last-child, #i18n_viz_tooltip span:last-child {
+.i18n_viz_tooltip a:last-child, .i18n_viz_tooltip span:last-child {
   margin-right: 0;
 }
 

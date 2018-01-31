@@ -6,3 +6,5 @@ en:
   foo: "bar"
   scope:
     bar: "foo"
+  input_value: "Valuable"
+  textarea_placeholder: "Placeholda"
